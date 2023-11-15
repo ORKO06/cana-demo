@@ -2,7 +2,8 @@ import flask
 import pickle
 import pandas as pd
 
-# Use pickle to load in the pre-trained model
+# Use pickle to load in the pre-trained model.
+## Have a folder model and inside that have the pkl file loaded
 with open(f'model/final_model.pkl', 'rb') as f:
     model = pickle.load(f)
 
