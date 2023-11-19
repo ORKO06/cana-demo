@@ -1,7 +1,7 @@
 // static 5 year rainfall ka data
 // Show static insurance and Mutual fund(Canara bank has khudka) products images
 
-import React from 'react'
+import React, { useContext } from 'react'
 import img1 from '../../assets/logo192.png'
 import last5YearRainfall from '../../assets/5yearrainfall.png'
 import forecast from '../../assets/forecast.jpeg'
@@ -11,8 +11,12 @@ import policy3 from '../../assets/policy3.jpeg'
 import mutual from '../../assets/mutual.jpeg'
 import { ButtonContainer2, DashboardContainer, ImageContainer, MFContainer, PolicyContainer, PolicyMFContainer, PolicyMFText, PredictionText, SuggestionBox, SuggestionContainer, SuggestionHeading, SuggestionText } from './Style'
 import { Button } from '../Shared/styles'
+import { RegistrationContext } from '../Registration/RegistrationContext'
 
 const Dashboard = () => {
+    const { inputData } = useContext(RegistrationContext);
+
+  console.log(inputData);
   return (
     <DashboardContainer>
         <PredictionText>Prediction: 70%</PredictionText>

@@ -1,26 +1,22 @@
 import './App.css';
 import { RegistrationForm } from './components/Registration/RegistrationForm';
-import RegistrationProvider from './components/Registration/RegistrationContext';
-import { useState } from 'react';
+import RegistrationProvider, { RegistrationContext } from './components/Registration/RegistrationContext';
+import { useContext, useState } from 'react';
 import Dashboard from './components/Dashboard/Dashboard';
 import axios from 'axios';
 
 function App() {
   const [submit, setSubmit] = useState(false);
-
+  
   const onSubmit = () =>{
-    console.log("start")
-    axios.post('http://localhost:5000/re', {
-   firstName: 'Fred',
-   lastName: 'Flintstone'
-}, {
-   headers: {
-      'Content-Type': 'application/json',
-   },
-}).then(function (response) {
-   console.log(response);
-   console.log("end");
-})
+//     axios.post('https://canara.onrender.com/re', {
+//     ...inputData
+// }, {
+//    headers: {
+//       'Content-Type': 'application/json',
+//    },
+// }).then(function (response) {
+// })
     setSubmit(true);
   }
 

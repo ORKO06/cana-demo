@@ -19,7 +19,7 @@ export const RegistrationContext = React.createContext({
    * @param {string} errorMessage
    * @param {boolean} errorVisibility default false
    */
-  setErrorMessage: () => {},
+  // setErrorMessage: () => {},
 });
 
 const RegistrationProvider = ({ children }) => {
@@ -29,7 +29,7 @@ const RegistrationProvider = ({ children }) => {
   const values = useMemo(() => {
     const setInputValue = (key, value) => {
       if (!key) return;
-      if (inputData[key].errorVisibility) setErrorMessage(key, '', false);
+      // if (inputData[key].errorVisibility) setErrorMessage(key, '', false);
       setInputData((prev) => ({
         ...prev,
         [key]: {
@@ -39,21 +39,11 @@ const RegistrationProvider = ({ children }) => {
       }));
     };
 
-    const setErrorMessage = (key, errorMessage, errorVisibility) => {
-      setInputData((prev) => ({
-        ...prev,
-        [key]: {
-          ...prev[key],
-          errorMessage,
-          errorVisibility: errorVisibility || false,
-        },
-      }));
-    };
+    
     
     return {
       inputData,
       setInputValue,
-      setErrorMessage,
       setInputData,
     };
   }, [ inputData]);

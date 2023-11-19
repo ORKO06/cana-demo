@@ -8,8 +8,7 @@ import { Button } from '../Shared/styles';
 export const RegistrationForm = ({onSubmit}) => {
   const { inputData, setInputValue } =
     useContext(RegistrationContext);
-
-    
+    console.log(inputData);
 
   return (
     <RegistrationCard>
@@ -31,13 +30,14 @@ export const RegistrationForm = ({onSubmit}) => {
                 } else {
                   gridCols = 'span 2';
                 }
-
                 return (
                   <div key={key} style={{ gridColumn: gridCols }}>
                     <Input
                       data={value}
                       key={key}
-                      onChange={(e) => setInputValue(key, e.target.value)}
+                      onChange={(e) => {
+                        setInputValue(key, e.target.value)
+                      }}
                     />
                   </div>
                 );
