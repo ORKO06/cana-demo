@@ -2,7 +2,7 @@ import flask
 import pickle
 import pandas as pd
 import flask_cors
-from flask import request, jsonify
+from flask import request, jsonify, make_response
 
 # Use pickle to load in the pre-trained model.
 # Have a folder model and inside that have the pkl file loaded
@@ -15,7 +15,15 @@ flask_cors.CORS(
     app, resources={r'/*': {'origins': '*'}}, supports_credentials=True)
 
 
+@app.route('/')
+def mai():
+    response = make_response("Hello", 200)
+
+    return response
+
 # Set up the main route
+
+
 @app.route('/re', methods=['GET', 'POST'])
 def main():
     if flask.request.method == 'OPTIONS':
@@ -99,4 +107,4 @@ def main():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
