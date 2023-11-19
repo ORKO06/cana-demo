@@ -10,13 +10,17 @@ function App() {
 
   const onSubmit = () =>{
     console.log("start")
-    axios.post('http://localhost:5000/predict',{
-      firstName: 'Fred',
-      lastName: 'Flintstone'
-    }).then(function (response) {
-      console.log(response);
-      console.log("end")
-    })
+    axios.post('http://localhost:5000/re', {
+   firstName: 'Fred',
+   lastName: 'Flintstone'
+}, {
+   headers: {
+      'Content-Type': 'application/json',
+   },
+}).then(function (response) {
+   console.log(response);
+   console.log("end");
+})
     setSubmit(true);
   }
 

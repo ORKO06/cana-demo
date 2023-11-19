@@ -46,7 +46,6 @@ export const RegistrationForm = ({onSubmit}) => {
 
           <Button
             type='submit'
-            variant='filled'
             text='Register'
             width='350px'
             onClick={onSubmit}
