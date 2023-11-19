@@ -27,7 +27,7 @@ def main():
 
     if flask.request.method == 'GET':
         # Just render the initial form, to get input
-        return (flask.render_template('main.html'))
+        return (flask.render_template('./main.html'))
 
     if flask.request.method == 'POST':
         data = request.get_json()
@@ -73,29 +73,29 @@ def main():
 
         # Render the form again, but add in the prediction and remind user
         # of the values they input before
-        # response = flask.jsonify({'result': prediction.tolist()})
-        # response.headers.add('Access-Control-Allow-Origin', '*')
-        # response.headers.add('Access-Control-Allow-Headers', 'Content-Type')
-        # response.headers.add('Access-Control-Allow-Methods', 'POST')
+        response = flask.jsonify({'result': prediction.tolist()})
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        response.headers.add('Access-Control-Allow-Headers', 'Content-Type')
+        response.headers.add('Access-Control-Allow-Methods', 'POST')
 
         # Render the form again, but add in the prediction and remind the user
         # of the values they input before
-        return flask.render_template('main.html',
-                                     original_input={'N_Default_L3m': N_Default_L3m,
-                                                     'Max_Utilization': Max_Utilization,
-                                                     'Max_Perc_Def_Chg_Pending': Max_Perc_Def_Chg_Pending,
-                                                     'N_Family_Member': N_Family_Member,
-                                                     'N_PosBkt_L3m': N_PosBkt_L3m,
-                                                     'Ever_Default_L12M': Ever_Default_L12M,
-                                                     'Perc_Paymode_Online': Perc_Paymode_Online,
-                                                     'Perc_Repay_Fail': Perc_Repay_Fail,
-                                                     'Max_DPD_L3m': Max_DPD_L3m,
-                                                     'Perc_Paymode_Cheq_Fail': Perc_Paymode_Cheq_Fail,
-                                                     'Age': Age,
-                                                     'N_Enq_L9m': N_Enq_L9m,
-                                                     'Max_Loan_Balance_Others': Max_Loan_Balance_Others,
-                                                     'N_WorkEx_Yr': N_WorkEx_Yr},
-                                     result=prediction)
+        # return flask.render_template('main.html',
+        #                              original_input={'N_Default_L3m': N_Default_L3m,
+        #                                              'Max_Utilization': Max_Utilization,
+        #                                              'Max_Perc_Def_Chg_Pending': Max_Perc_Def_Chg_Pending,
+        #                                              'N_Family_Member': N_Family_Member,
+        #                                              'N_PosBkt_L3m': N_PosBkt_L3m,
+        #                                              'Ever_Default_L12M': Ever_Default_L12M,
+        #                                              'Perc_Paymode_Online': Perc_Paymode_Online,
+        #                                              'Perc_Repay_Fail': Perc_Repay_Fail,
+        #                                              'Max_DPD_L3m': Max_DPD_L3m,
+        #                                              'Perc_Paymode_Cheq_Fail': Perc_Paymode_Cheq_Fail,
+        #                                              'Age': Age,
+        #                                              'N_Enq_L9m': N_Enq_L9m,
+        #                                              'Max_Loan_Balance_Others': Max_Loan_Balance_Others,
+        #                                              'N_WorkEx_Yr': N_WorkEx_Yr},
+        #                              result=prediction)
 
 
 if __name__ == '__main__':
