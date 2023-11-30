@@ -8,7 +8,7 @@ import policy1 from '../../assets/policy1.jpeg'
 import policy2 from '../../assets/policy2.jpeg'
 import policy3 from '../../assets/policy3.jpeg'
 import mutual from '../../assets/mutual.jpeg'
-import { ButtonContainer2, DashboardContainer, ImageContainer, MFContainer, PolicyContainer, PolicyMFContainer, PolicyMFText, PredictionText, SuggestionBox, SuggestionContainer, SuggestionHeading, SuggestionText } from './Style'
+import { ButtonContainer2, DashboardContainer, ErrorText, ImageContainer, MFContainer, PolicyContainer, PolicyMFContainer, PolicyMFText, PredictionText, SuggestionBox, SuggestionContainer, SuggestionHeading, SuggestionText } from './Style'
 import { Button } from '../Shared/styles'
 import { RegistrationContext } from '../Registration/RegistrationContext'
 import axios from 'axios'
@@ -16,6 +16,7 @@ import axios from 'axios'
 const Dashboard = () => {
     const { inputData } = useContext(RegistrationContext);
     const [predict, setPredict] = useState(0);
+    const [error,setError] = useState(false);
 
     useEffect(()=>{
         const data = {
@@ -40,7 +41,6 @@ const Dashboard = () => {
             Total_Field_Trails: {value: inputData.Total_Field_Trails.value},
             Total_Resolved: {value: inputData.Total_Resolved.value},
             }
-        console.log(data);
         const config = {
             headers: {
               'Content-Type': 'application/json',
@@ -48,65 +48,68 @@ const Dashboard = () => {
           };
         axios.post('https://canara.onrender.com/re', data, config )
         .then(response => {
-            console.log('Response:', response.data.result[0]);
             setPredict(Number((response.data.result[0] * 100).toFixed(2)))
+            setError(false);
         })
         .catch(error => {
           console.error('Error:', error.message); 
           console.error('Error Details:', error.response.data); 
+          setError(true);
+          setPredict(0);
         });
     },[inputData])
-
-  console.log(inputData);
+    
   return (
-    <DashboardContainer>
-        <PredictionText>Prediction: {predict}%</PredictionText>
-        <ImageContainer>
-            <img height={200} width={400} src={last5YearRainfall} alt="Text" />
-            <img height={200} width={400} src={forecast} alt="Text" />
-        </ImageContainer>
-        <PolicyMFContainer>
+    error ? 
+        <DashboardContainer>
+            <PredictionText>Prediction: {predict}%</PredictionText>
+            <ImageContainer>
+                <img height={200} width={300} src={last5YearRainfall} alt="Text" />
+                <img height={200} width={300} src={forecast} alt="Text" />
+            </ImageContainer>
+            <PolicyMFContainer>
+                <div>
+                    <PolicyMFText>Policies</PolicyMFText>
+                    <MFContainer>
+                        <img height={100} width={200} src={policy1} alt="Text" />
+                        <img height={100} width={200} src={policy2} alt="Text" />
+                        <img height={100} width={200} src={policy3} alt="Text" />
+                    </MFContainer>
+                </div>
+                <div>
+                    <PolicyMFText>Mutual Fund Container</PolicyMFText>
+                    <PolicyContainer>
+                        <img height={200} width={300} src={mutual} alt="Text" />
+                    </PolicyContainer>
+                </div>
+            </PolicyMFContainer>
             <div>
-                <PolicyMFText>Policies</PolicyMFText>
-                <MFContainer>
-                    <img height={100} width={200} src={policy1} alt="Text" />
-                    <img height={100} width={200} src={policy2} alt="Text" />
-                    <img height={100} width={200} src={policy3} alt="Text" />
-                </MFContainer>
+                <SuggestionHeading>Suggestions</SuggestionHeading>
+                    <SuggestionContainer>
+                        <SuggestionBox>
+                            <SuggestionBox>Low:</SuggestionBox>
+                            <SuggestionText>Discounts on adding guarantors</SuggestionText>
+                            <SuggestionText>Increase phone based communication  </SuggestionText>
+                            <SuggestionText>and decrease field trails for operational efficiency </SuggestionText>
+                        </SuggestionBox>
+                        <SuggestionBox>
+                            <SuggestionText>Medium: </SuggestionText>
+                            <SuggestionText>Discounts on adding guarantors </SuggestionText>
+                            <SuggestionText>mandatory collaterals and insurance</SuggestionText>
+                        </SuggestionBox>
+                        <SuggestionBox>
+                            <SuggestionText>High: </SuggestionText>
+                            <SuggestionText>Mandatory guarantors and insurance(if not collaterals)</SuggestionText>
+                            <SuggestionText>Field Trails and taking customer feedback is necessary</SuggestionText>
+                        </SuggestionBox>
+                </SuggestionContainer>
             </div>
-            <div>
-                <PolicyMFText>Mutual Fund Container</PolicyMFText>
-                <PolicyContainer>
-                    <img height={200} width={400} src={mutual} alt="Text" />
-                </PolicyContainer>
-            </div>
-        </PolicyMFContainer>
-        <div>
-            <SuggestionHeading>Suggestions</SuggestionHeading>
-                <SuggestionContainer>
-                    <SuggestionBox>
-                        <SuggestionBox>Low:</SuggestionBox>
-                        <SuggestionText>Discounts on adding guarantors</SuggestionText>
-                        <SuggestionText>Increase phone based communication  </SuggestionText>
-                        <SuggestionText>and decrease field trails for operational efficiency </SuggestionText>
-                    </SuggestionBox>
-                    <SuggestionBox>
-                        <SuggestionText>Medium: </SuggestionText>
-                        <SuggestionText>Discounts on adding guarantors </SuggestionText>
-                        <SuggestionText>mandatory collaterals and insurance</SuggestionText>
-                    </SuggestionBox>
-                    <SuggestionBox>
-                        <SuggestionText>High: </SuggestionText>
-                        <SuggestionText>Mandatory guarantors and insurance(if not collaterals)</SuggestionText>
-                        <SuggestionText>Field Trails and taking customer feedback is necessary</SuggestionText>
-                    </SuggestionBox>
-            </SuggestionContainer>
-        </div>
-        <ButtonContainer2>
-            <Button><a href='mailto:Chandrachudpati@gmail.com'>Send mail to Branch Manager</a></Button>
-        </ButtonContainer2>
-            
-    </DashboardContainer>
+            <ButtonContainer2>
+                <Button><a href='mailto:Chandrachudpati@gmail.com'>Send mail to Branch Manager</a></Button>
+            </ButtonContainer2>  
+        </DashboardContainer>
+        :
+        <ErrorText>Kindly Submit the form again</ErrorText>
   )
 }
 
