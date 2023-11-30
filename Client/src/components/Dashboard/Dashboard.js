@@ -60,7 +60,7 @@ const Dashboard = () => {
     },[inputData])
     
   return (
-    error ? 
+    !error ? 
         <DashboardContainer>
             <PredictionText>Prediction: {predict}%</PredictionText>
             <ImageContainer>
