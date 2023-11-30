@@ -40,20 +40,24 @@ def main():
         data = request.get_json()
         # print(data)
         # 3.0	38	100.0	5	0.0	1	0.285714	0.428571	19.0	0.750000	46	0	5527.0	15
-        N_Default_L3m = data['N_Default_L3m']['value']
-        Max_Utilization = data['Max_Utilization']['value'] or 100
-        Max_Perc_Def_Chg_Pending = data['Max_Perc_Def_Chg_Pending']['value'] or 100
-        N_Family_Member = data['N_Family_Member']['value'] or 1
-        N_PosBkt_L3m = data['N_PosBkt_L3m']['value'] or 0
-        Ever_Default_L12M = data['Ever_Default_L12M']['value'] or 1
-        Perc_Paymode_Online = data['Perc_Paymode_Online']['value'] or 0.333333333
-        Perc_Repay_Fail = data['Perc_Repay_Fail']['value'] or 0.333333333
-        Max_DPD_L3m = data['Max_DPD_L3m']['value'] or 19
-        Perc_Paymode_Cheq_Fail = data['Perc_Paymode_Cheq_Fail']['value'] or 0.5
-        Age = data['Age']['value'] or 24
-        N_Enq_L9m = data['N_Enq_L9m']['value'] or 0
-        Max_Loan_Balance_Others = data['Max_Loan_Balance_Others']['value'] or 55384
-        N_WorkEx_Yr = data['N_WorkEx_Yr']['value'] or 4
+        N_Default_L3m = int(data['N_Default_L3m']['value']) or 3.0
+        Max_Utilization = int(data['Max_Utilization']['value']) or 100
+        Max_Perc_Def_Chg_Pending = int(
+            data['Max_Perc_Def_Chg_Pending']['value']) or 100
+        N_Family_Member = int(data['N_Family_Member']['value']) or 1
+        N_PosBkt_L3m = int(data['N_PosBkt_L3m']['value']) or 0
+        Ever_Default_L12M = int(data['Ever_Default_L12M']['value']) or 1
+        Perc_Paymode_Online = int(
+            data['Perc_Paymode_Online']['value']) or 0.333333333
+        Perc_Repay_Fail = int(data['Perc_Repay_Fail']['value']) or 0.333333333
+        Max_DPD_L3m = int(data['Max_DPD_L3m']['value']) or 19
+        Perc_Paymode_Cheq_Fail = int(
+            data['Perc_Paymode_Cheq_Fail']['value']) or 0.5
+        Age = int(data['Age']['value']) or 24
+        N_Enq_L9m = int(data['N_Enq_L9m']['value']) or 0
+        Max_Loan_Balance_Others = int(
+            data['Max_Loan_Balance_Others']['value']) or 55384
+        N_WorkEx_Yr = int(data['N_WorkEx_Yr']['value']) or 4
 
         Max_DPD_L3m = Max_DPD_L3m*Max_DPD_L3m
         N_Default_L3m = N_Default_L3m*N_Default_L3m
