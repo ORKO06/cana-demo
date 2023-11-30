@@ -46,7 +46,7 @@ export const INIT_STATE = {
     N_Default_L3m:{
       ...INIT_STATE,
       value: N_Default_L3m,
-      placeHolder: 'Number of times defaulted',
+      placeHolder: 'Times defaulted last 3 month',
       readOnly: false,
       type: 'text',
       inputMode: 'text',
@@ -72,7 +72,7 @@ export const INIT_STATE = {
     Max_Utilization:{
       ...INIT_STATE,
       value: Max_Utilization,
-      placeHolder: 'Max ratio of previous month to current month outstanding balance',
+      placeHolder: 'Max utilization',
       readOnly: false,
       type: 'text',
       inputMode: 'text',
@@ -111,7 +111,7 @@ export const INIT_STATE = {
     Max_Ratio_OC_Pending_POS:{
       ...INIT_STATE,
       value: Max_Ratio_OC_Pending_POS,
-      placeHolder: 'Max ratio of overdue charges pending to current month outstanding balance',
+      placeHolder: 'Ratio - OC Pending',
       readOnly: false,
       type: 'text',
       inputMode: 'text',
@@ -124,7 +124,7 @@ export const INIT_STATE = {
     N_PosBkt_L3m:{
       ...INIT_STATE,
       value: N_PosBkt_L3m,
-      placeHolder: 'Number of times customer consecutively defaulted in last 3 months',
+      placeHolder: 'Consecutively defaulted in last 3 months',
       readOnly: false,
       type: 'text',
       inputMode: 'text',
@@ -137,7 +137,7 @@ export const INIT_STATE = {
     CoAp_Income:{
       ...INIT_STATE,
       value: CoAp_Income,
-      placeHolder: 'Income of co-applicant (un-verified field)',
+      placeHolder: 'Income of co-applicant',
       readOnly: false,
       type: 'text',
       inputMode: 'text',
@@ -215,7 +215,7 @@ export const INIT_STATE = {
     Perc_Paymode_Cheq_Fail:{
       ...INIT_STATE,
       value: Perc_Paymode_Cheq_Fail,
-      placeHolder: 'Percentage of times repayment mode was ‘cheque’ and was not cleared',
+      placeHolder: 'Percentage ‘cheque’ failed',
       readOnly: false,
       type: 'text',
       inputMode: 'text',
@@ -241,7 +241,7 @@ export const INIT_STATE = {
     Total_Field_Trails:{
       ...INIT_STATE,
       value: Total_Field_Trails,
-      placeHolder: 'Total number of customer visits done by Field representative',
+      placeHolder: 'Total Field visit',
       readOnly: false,
       type: 'text',
       inputMode: 'text',
@@ -254,7 +254,7 @@ export const INIT_STATE = {
     Total_Resolved:{
       ...INIT_STATE,
       value: Total_Resolved,
-      placeHolder: 'Number of times resolved through Calling or Field',
+      placeHolder: "Resolved by Calling/Field",
       readOnly: false,
       type: 'text',
       inputMode: 'text',
@@ -267,7 +267,7 @@ export const INIT_STATE = {
     N_Enq_L9m:{
       ...INIT_STATE,
       value: N_Enq_L9m,
-      placeHolder: 'Number of times enquires for new loans done by customer in last 9 months',
+      placeHolder: 'Enquiry for new loans',
       readOnly: false,
       type: 'text',
       inputMode: 'text',
@@ -280,7 +280,7 @@ export const INIT_STATE = {
     Max_Loan_Balance_Others:{
       ...INIT_STATE,
       value: Max_Loan_Balance_Others,
-      placeHolder: 'Maximum outstanding balance of loans taken other than IDFC',
+      placeHolder: 'loan balance taken other than Canara',
       readOnly: false,
       type: 'text',
       inputMode: 'text',
