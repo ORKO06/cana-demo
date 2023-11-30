@@ -37,23 +37,23 @@ def main():
     #     return response
 
     if flask.request.method == 'POST':
-        # data = request.get_json()
+        data = request.get_json()
         # print(data)
         # 3.0	38	100.0	5	0.0	1	0.285714	0.428571	19.0	0.750000	46	0	5527.0	15
-        N_Default_L3m = 2
-        Max_Utilization = 100
-        Max_Perc_Def_Chg_Pending = 100
-        N_Family_Member = 1
-        N_PosBkt_L3m = 0
-        Ever_Default_L12M = 1
-        Perc_Paymode_Online = 0.333333333
-        Perc_Repay_Fail = 0.333333333
-        Max_DPD_L3m = 19
-        Perc_Paymode_Cheq_Fail = 0.5
-        Age = 24
-        N_Enq_L9m = 0
-        Max_Loan_Balance_Others = 55384
-        N_WorkEx_Yr = 4
+        N_Default_L3m = data['N_Default_L3m']['value']
+        Max_Utilization = data['Max_Utilization']['value'] or 100
+        Max_Perc_Def_Chg_Pending = data['Max_Perc_Def_Chg_Pending']['value'] or 100
+        N_Family_Member = data['N_Family_Member']['value'] or 1
+        N_PosBkt_L3m = data['N_PosBkt_L3m']['value'] or 0
+        Ever_Default_L12M = data['Ever_Default_L12M']['value'] or 1
+        Perc_Paymode_Online = data['Perc_Paymode_Online']['value'] or 0.333333333
+        Perc_Repay_Fail = data['Perc_Repay_Fail']['value'] or 0.333333333
+        Max_DPD_L3m = data['Max_DPD_L3m']['value'] or 19
+        Perc_Paymode_Cheq_Fail = data['Perc_Paymode_Cheq_Fail']['value'] or 0.5
+        Age = data['Age']['value'] or 24
+        N_Enq_L9m = data['N_Enq_L9m']['value'] or 0
+        Max_Loan_Balance_Others = data['Max_Loan_Balance_Others']['value'] or 55384
+        N_WorkEx_Yr = data['N_WorkEx_Yr']['value'] or 4
 
         Max_DPD_L3m = Max_DPD_L3m*Max_DPD_L3m
         N_Default_L3m = N_Default_L3m*N_Default_L3m
