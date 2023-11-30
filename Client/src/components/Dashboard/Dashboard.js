@@ -1,8 +1,7 @@
 // static 5 year rainfall ka data
 // Show static insurance and Mutual fund(Canara bank has khudka) products images
 
-import React, { useContext } from 'react'
-import img1 from '../../assets/logo192.png'
+import React, { useContext, useEffect } from 'react'
 import last5YearRainfall from '../../assets/5yearrainfall.png'
 import forecast from '../../assets/forecast.jpeg'
 import policy1 from '../../assets/policy1.jpeg'
@@ -12,9 +11,21 @@ import mutual from '../../assets/mutual.jpeg'
 import { ButtonContainer2, DashboardContainer, ImageContainer, MFContainer, PolicyContainer, PolicyMFContainer, PolicyMFText, PredictionText, SuggestionBox, SuggestionContainer, SuggestionHeading, SuggestionText } from './Style'
 import { Button } from '../Shared/styles'
 import { RegistrationContext } from '../Registration/RegistrationContext'
+import axios from 'axios'
 
 const Dashboard = () => {
     const { inputData } = useContext(RegistrationContext);
+
+    useEffect(()=>{
+        const data = {...inputData};
+        console.log(data);
+        axios.post('https://canara.onrender.com/re', data ).then(response => {
+            console.log('Response:', response.data);
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          });
+    },[inputData])
 
   console.log(inputData);
   return (

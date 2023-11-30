@@ -8,8 +8,6 @@ import { Button } from '../Shared/styles';
 export const RegistrationForm = ({onSubmit}) => {
   const { inputData, setInputValue } =
     useContext(RegistrationContext);
-    console.log(inputData);
-
   return (
     <RegistrationCard>
       <RegistrationCardTitle>
@@ -46,7 +44,6 @@ export const RegistrationForm = ({onSubmit}) => {
 
           <Button
             type='submit'
-            text='Register'
             width='350px'
             onClick={onSubmit}
           >

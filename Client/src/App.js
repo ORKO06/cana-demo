@@ -7,16 +7,9 @@ import axios from 'axios';
 
 function App() {
   const [submit, setSubmit] = useState(false);
+ const {inputData} = useContext(RegistrationContext)
   
   const onSubmit = () =>{
-//     axios.post('https://canara.onrender.com/re', {
-//     ...inputData
-// }, {
-//    headers: {
-//       'Content-Type': 'application/json',
-//    },
-// }).then(function (response) {
-// })
     setSubmit(true);
   }
 
