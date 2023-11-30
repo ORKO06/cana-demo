@@ -103,7 +103,7 @@ const Dashboard = () => {
             </SuggestionContainer>
         </div>
         <ButtonContainer2>
-            <Button>Send mail to Branch Manager</Button>
+            <Button><a href='mailto:Chandrachudpati@gmail.com'>Send mail to Branch Manager</a></Button>
         </ButtonContainer2>
             
     </DashboardContainer>
